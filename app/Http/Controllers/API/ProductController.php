@@ -15,7 +15,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::with('categories:id,name')->get();
+        return response()->json($products, 200);
     }
 
     /**
