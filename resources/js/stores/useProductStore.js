@@ -1,13 +1,18 @@
 import { defineStore } from 'pinia';
 import { http } from '@/services/http_service';
 
-export const useProductStore = defineStore('productStore', {
+export const useProductStore = defineStore('productStoreId', {
     state: () => {
-        products: []
+        return {
+            products: []
+        }
     },
 
     getters: {
         getProducts: state => state.products,
+        // getProducts(state){
+        //     return state.products;
+        // }
     },
 
     actions: {

@@ -3,9 +3,18 @@ import Home from '@/pages/Home.vue'
 const routes = [
     {
         path: '/',
+        redirect: '/products'
+    },
+    {
+        path: '/products',
         name: 'home',
         component: Home
-    }
+    },
+    {
+        path: '/products/:slug/details',
+        name: 'productDetails',
+        component: () => import('./pages/ProductDetails.vue')
+    },
 ];
 
 const router = createRouter({
