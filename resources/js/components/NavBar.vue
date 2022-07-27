@@ -11,8 +11,18 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li> -->
                 </ul>
-                <button class="btn btn-primary">Cart (0)</button>
+                <button class="btn btn-primary">Cart ({{ cartItemCounts }})</button>
             </div>
         </div>
         </nav>
 </template>
+
+<script setup>
+    import { computed } from '@vue/runtime-core';
+    import { useCartStore } from '../stores/useCartStore';
+    const store = useCartStore();
+
+    const cartItemCounts = computed(() => {
+        return store.cart.length;
+    });
+</script>

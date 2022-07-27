@@ -12,10 +12,14 @@
                     <td> {{ product.description }}</td>
                 </tr>
                 <tr>
+                    <td> ${{ product.price }}</td>
+                </tr>
+                <tr>
                     <td>
                         <button
                             style="background-color: blue"
                             class="btn btn-primary mt-5"
+                            @click="addToCart"
                         >
                             Add To Cart
                         </button>
@@ -30,9 +34,14 @@
     import { computed } from 'vue';
     import { useRoute } from 'vue-router';
     import { useProductStore } from '../stores/useProductStore';
+    import { useCartStore } from '../stores/useCartStore';
 
     const route = useRoute();
     const store = useProductStore();
+    const cartStore = useCartStore();
 
     const product = computed(() => store.products.find(obj => obj.slug === route.params.slug));
+    const addToCart = () => {
+        cartStore.addToCart(product);
+    }
 </script>
