@@ -22,7 +22,7 @@ class UserController extends Controller
 
        try {
            $payment = $user->charge(
-                $request->input('amount'),
+                (int)$request->input('amount') * 100,
                 $request->input('payment_method_id')
            );
 
@@ -30,7 +30,7 @@ class UserController extends Controller
            $order = $user->orders()
                         ->create([
                             'transaction_id' => $payment->charges->data[0]->id,
-                            'total' => $payment->charges->data[0]->amount
+                            'total' => ($payment->charges->data[0]->amount) / 100
                         ]);
             foreach ($request->input('cart') as $item) {
                 $order->products()
