@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">E-Com</a>
+            <router-link class="navbar-brand" to="/">E-Com</router-link>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -11,7 +11,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Home</a>
                     </li> -->
                 </ul>
-                <button class="btn btn-primary">Cart ({{ cartItemCounts }})</button>
+                <router-link to="/cart" class="btn btn-primary">Cart ({{ cartItemCounts }})</router-link>
             </div>
         </div>
         </nav>
