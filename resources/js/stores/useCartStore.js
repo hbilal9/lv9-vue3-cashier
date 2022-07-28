@@ -1,9 +1,11 @@
 import { defineStore } from 'pinia';
+import { http } from '../services/http_service'
 
 export const useCartStore = defineStore('cartStoreId', {
     state: () => {
         return {
-            cart: []
+            cart: [],
+            orderDetails: {}
         }
     },
 
@@ -23,6 +25,15 @@ export const useCartStore = defineStore('cartStoreId', {
             }
             product.value.quantity = 1;
             this.cart.push(product.value);
+        },
+
+        processPayment: async function (data){
+            const response = await http().post('/purchase', data);
+            this.orderDetails = response.data;
+        },
+
+        clearCart: function() {
+            this.cart = [];
         }
     }
 })
