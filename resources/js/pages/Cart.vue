@@ -15,8 +15,8 @@
                 <td>{{ calculateSubTotal(item) }}</td>
             </tr>
             <tr>
-                <td colspan="2" class="text-center">Total: </td>
-                <td>{{cartTotal}}</td>
+                <td colspan="2" class="text-center"><strong> Total: </strong></td>
+                <td><strong> {{ cartTotal }} </strong></td>
             </tr>
         </tbody>
     </table>

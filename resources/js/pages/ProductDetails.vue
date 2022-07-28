@@ -16,9 +16,16 @@
                 </tr>
                 <tr>
                     <td>
+                        <router-link
+                            style="background-color: blue; margin-right: 15px"
+                            class="btn btn-primary mt-5 mr-4"
+                            to="/"
+                        >
+                            Back
+                        </router-link>
                         <button
                             style="background-color: blue"
-                            class="btn btn-primary mt-5"
+                            class="btn btn-primary mt-5 ml-4"
                             @click="addToCart"
                         >
                             Add To Cart
