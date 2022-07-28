@@ -69,7 +69,7 @@
                     class="btn btn-primary shadow-none"
                     :disabled="paymentProcessing"
                 >
-                    Pay Now
+                    {{ buttonText }}
                 </button>
             </div>
         </div>
@@ -80,7 +80,9 @@
     import { loadStripe } from '@stripe/stripe-js'
     import { computed, onMounted, ref } from '@vue/runtime-core';
     import { useCartStore } from '../stores/useCartStore';
+    import { useRouter } from 'vue-router'
     const store = useCartStore();
+    const router = useRouter();
 
     const cartData = computed(() => {
         return store.cart;
@@ -109,8 +111,10 @@
     });
 
     
+    const buttonText = ref('Pay Now');
     const processPayment = async () => {
         paymentProcessing.value = true;
+        buttonText.value = "Processing...";
         const { paymentMethod, error } = await stripe.value.createPaymentMethod (
             'card', cardElement.value, {
                 billing_details: {
@@ -132,6 +136,8 @@
                 store.processPayment(customer.value);
                 paymentProcessing.value = false;
                 store.clearCart();
+                router.push('/order-details')
+
             // } catch (error) {
             //     console.log(error)
             // }
