@@ -30,6 +30,11 @@ Generate APP Key
     php artisan key:gen
 ```
 
+Run Migration
+```bash
+    php artisan migrate --seed
+```
+
 
 ## Run Locally
 
